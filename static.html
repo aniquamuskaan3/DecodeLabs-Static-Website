@@ -1,0 +1,1230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<title>Ultimate Modern Static Website</title>
+
+<!-- GOOGLE FONT -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<!-- FONT AWESOME -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+scroll-behavior:smooth;
+}
+
+body{
+font-family:'Poppins',sans-serif;
+background:#050816;
+color:white;
+overflow-x:hidden;
+transition:0.5s;
+}
+
+/* GLOW */
+
+body::before{
+content:'';
+position:fixed;
+width:500px;
+height:500px;
+background:#00f0ff33;
+filter:blur(120px);
+top:-100px;
+left:-100px;
+z-index:-1;
+}
+
+body::after{
+content:'';
+position:fixed;
+width:500px;
+height:500px;
+background:#8b5cf633;
+filter:blur(120px);
+bottom:-100px;
+right:-100px;
+z-index:-1;
+}
+
+/* CUSTOM SCROLLBAR */
+
+::-webkit-scrollbar{
+width:10px;
+}
+
+::-webkit-scrollbar-thumb{
+background:linear-gradient(#00f0ff,#8b5cf6);
+border-radius:20px;
+}
+
+/* NAVBAR */
+
+nav{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+padding:20px 8%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+background:rgba(0,0,0,0.4);
+backdrop-filter:blur(15px);
+z-index:1000;
+border-bottom:1px solid rgba(255,255,255,0.1);
+}
+
+.logo{
+font-size:32px;
+font-weight:800;
+background:linear-gradient(to right,#00f0ff,#8b5cf6);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+nav ul{
+display:flex;
+gap:30px;
+list-style:none;
+}
+
+nav ul li a{
+text-decoration:none;
+color:white;
+font-weight:500;
+transition:0.3s;
+position:relative;
+}
+
+nav ul li a::after{
+content:'';
+position:absolute;
+left:0;
+bottom:-5px;
+width:0%;
+height:2px;
+background:#00f0ff;
+transition:0.4s;
+}
+
+nav ul li a:hover::after{
+width:100%;
+}
+
+nav ul li a:hover{
+color:#00f0ff;
+}
+
+.nav-right{
+display:flex;
+align-items:center;
+gap:15px;
+}
+
+#theme-toggle,
+#menu-btn{
+width:50px;
+height:50px;
+border:none;
+border-radius:50%;
+background:#111827;
+color:#00f0ff;
+font-size:20px;
+cursor:pointer;
+transition:0.4s;
+}
+
+#theme-toggle:hover,
+#menu-btn:hover{
+transform:rotate(360deg);
+background:#00f0ff;
+color:black;
+}
+
+#menu-btn{
+display:none;
+}
+
+/* HERO */
+
+.hero{
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+padding:120px 8%;
+position:relative;
+}
+
+.hero-content{
+max-width:950px;
+}
+
+.hero-content h3{
+font-size:25px;
+color:#00f0ff;
+margin-bottom:15px;
+}
+
+.hero-content h1{
+font-size:90px;
+line-height:1.1;
+margin-bottom:20px;
+}
+
+.hero-content h1 span{
+background:linear-gradient(to right,#00f0ff,#8b5cf6);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.typing{
+border-right:4px solid #00f0ff;
+white-space:nowrap;
+overflow:hidden;
+display:inline-block;
+animation:blink .7s infinite;
+}
+
+@keyframes blink{
+50%{
+border-color:transparent;
+}
+}
+
+.hero-content p{
+font-size:20px;
+line-height:1.9;
+color:#d1d5db;
+margin-bottom:40px;
+}
+
+.hero-btns{
+display:flex;
+justify-content:center;
+gap:20px;
+flex-wrap:wrap;
+}
+
+.btn{
+padding:15px 35px;
+border-radius:50px;
+text-decoration:none;
+font-weight:600;
+transition:0.4s;
+}
+
+.primary-btn{
+background:linear-gradient(to right,#00f0ff,#8b5cf6);
+color:white;
+box-shadow:0 10px 30px rgba(0,240,255,0.3);
+}
+
+.primary-btn:hover{
+transform:translateY(-8px) scale(1.05);
+}
+
+.secondary-btn{
+border:2px solid #00f0ff;
+color:#00f0ff;
+}
+
+.secondary-btn:hover{
+background:#00f0ff;
+color:black;
+}
+
+/* SOCIAL */
+
+.social-icons{
+margin-top:40px;
+display:flex;
+justify-content:center;
+gap:20px;
+}
+
+.social-icons a{
+width:55px;
+height:55px;
+display:flex;
+align-items:center;
+justify-content:center;
+background:#111827;
+border-radius:50%;
+font-size:22px;
+color:#00f0ff;
+transition:0.4s;
+text-decoration:none;
+}
+
+.social-icons a:hover{
+transform:translateY(-10px) rotate(360deg);
+background:#00f0ff;
+color:black;
+}
+
+/* SECTION */
+
+section{
+padding:110px 8%;
+}
+
+.section-title{
+text-align:center;
+font-size:55px;
+margin-bottom:70px;
+background:linear-gradient(to right,#00f0ff,#8b5cf6);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+/* ABOUT */
+
+.about-container{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+gap:50px;
+align-items:center;
+}
+
+.about-image img{
+width:100%;
+border-radius:30px;
+transition:0.5s;
+box-shadow:0 20px 50px rgba(0,0,0,0.5);
+}
+
+.about-image img:hover{
+transform:scale(1.05);
+}
+
+.about-text p{
+font-size:18px;
+line-height:2;
+color:#d1d5db;
+}
+
+/* STATS */
+
+.stats{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:25px;
+margin-top:60px;
+}
+
+.stat-box{
+background:rgba(255,255,255,0.05);
+padding:35px;
+border-radius:25px;
+text-align:center;
+backdrop-filter:blur(15px);
+transition:0.5s;
+}
+
+.stat-box:hover{
+transform:translateY(-10px);
+}
+
+.stat-box h2{
+font-size:45px;
+color:#00f0ff;
+margin-bottom:10px;
+}
+
+/* SERVICES */
+
+.services-grid,
+.projects-grid,
+.team-grid,
+.blog-grid,
+.pricing-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:30px;
+}
+
+.card{
+background:rgba(255,255,255,0.05);
+padding:35px;
+border-radius:25px;
+backdrop-filter:blur(15px);
+border:1px solid rgba(255,255,255,0.1);
+transition:0.5s;
+}
+
+.card:hover{
+transform:translateY(-12px);
+box-shadow:0 20px 50px rgba(0,240,255,0.2);
+}
+
+.card i{
+font-size:50px;
+margin-bottom:20px;
+color:#00f0ff;
+}
+
+.card h3{
+font-size:25px;
+margin-bottom:15px;
+}
+
+.card p{
+line-height:1.8;
+color:#d1d5db;
+}
+
+/* PROJECTS */
+
+.project-card{
+background:rgba(255,255,255,0.05);
+border-radius:30px;
+overflow:hidden;
+transition:0.5s;
+}
+
+.project-card:hover{
+transform:translateY(-12px);
+}
+
+.project-card img{
+width:100%;
+height:230px;
+object-fit:cover;
+}
+
+.project-info{
+padding:25px;
+}
+
+.project-info h3{
+font-size:28px;
+margin-bottom:15px;
+}
+
+.project-info p{
+line-height:1.8;
+color:#d1d5db;
+}
+
+/* TEAM */
+
+.team-card{
+text-align:center;
+background:rgba(255,255,255,0.05);
+padding:30px;
+border-radius:25px;
+transition:0.5s;
+}
+
+.team-card:hover{
+transform:translateY(-10px);
+}
+
+.team-card img{
+width:120px;
+height:120px;
+border-radius:50%;
+object-fit:cover;
+margin-bottom:20px;
+}
+
+/* BLOG */
+
+.blog-card{
+background:rgba(255,255,255,0.05);
+border-radius:25px;
+overflow:hidden;
+transition:0.5s;
+}
+
+.blog-card:hover{
+transform:translateY(-10px);
+}
+
+.blog-card img{
+width:100%;
+height:220px;
+object-fit:cover;
+}
+
+.blog-content{
+padding:25px;
+}
+
+/* PRICING */
+
+.price-card{
+background:rgba(255,255,255,0.05);
+padding:40px;
+border-radius:25px;
+text-align:center;
+transition:0.5s;
+}
+
+.price-card:hover{
+transform:scale(1.05);
+}
+
+.price-card h2{
+font-size:45px;
+color:#00f0ff;
+margin:20px 0;
+}
+
+/* FAQ */
+
+.faq{
+max-width:900px;
+margin:auto;
+}
+
+.faq-item{
+background:rgba(255,255,255,0.05);
+padding:25px;
+margin-bottom:20px;
+border-radius:20px;
+cursor:pointer;
+}
+
+.faq-question{
+display:flex;
+justify-content:space-between;
+align-items:center;
+font-size:20px;
+}
+
+.faq-answer{
+max-height:0;
+overflow:hidden;
+transition:0.5s;
+color:#d1d5db;
+margin-top:15px;
+}
+
+.faq-item.active .faq-answer{
+max-height:200px;
+}
+
+/* CONTACT */
+
+.contact-box{
+max-width:900px;
+margin:auto;
+background:rgba(255,255,255,0.05);
+padding:50px;
+border-radius:30px;
+text-align:center;
+}
+
+.contact-form{
+margin-top:40px;
+display:grid;
+gap:20px;
+}
+
+.contact-form input,
+.contact-form textarea{
+padding:18px;
+border:none;
+border-radius:15px;
+background:#111827;
+color:white;
+font-size:16px;
+outline:none;
+}
+
+.contact-form button{
+border:none;
+cursor:pointer;
+}
+
+.contact-details{
+display:flex;
+justify-content:center;
+gap:20px;
+flex-wrap:wrap;
+margin-top:30px;
+}
+
+.contact-details div{
+background:#111827;
+padding:18px 25px;
+border-radius:15px;
+}
+
+/* FOOTER */
+
+footer{
+padding:30px;
+text-align:center;
+background:#020617;
+color:#94a3b8;
+}
+
+/* BACK TO TOP */
+
+#topBtn{
+position:fixed;
+bottom:30px;
+right:30px;
+width:55px;
+height:55px;
+border:none;
+border-radius:50%;
+background:#00f0ff;
+color:black;
+font-size:20px;
+cursor:pointer;
+display:none;
+z-index:999;
+}
+
+/* REVEAL */
+
+.reveal{
+opacity:0;
+transform:translateY(60px);
+transition:1s;
+}
+
+.reveal.active{
+opacity:1;
+transform:translateY(0);
+}
+
+/* LIGHT MODE */
+
+.light-mode{
+background:#f8fafc;
+color:#111827;
+}
+
+.light-mode nav{
+background:rgba(255,255,255,0.8);
+}
+
+.light-mode nav ul li a,
+.light-mode .about-text p,
+.light-mode .card p,
+.light-mode .project-info p,
+.light-mode .hero-content p{
+color:#111827;
+}
+
+.light-mode .card,
+.light-mode .project-card,
+.light-mode .team-card,
+.light-mode .blog-card,
+.light-mode .price-card,
+.light-mode .faq-item,
+.light-mode .contact-box,
+.light-mode .stat-box{
+background:white;
+}
+
+.light-mode .contact-form input,
+.light-mode .contact-form textarea{
+background:#e5e7eb;
+color:black;
+}
+
+.light-mode footer{
+background:#e5e7eb;
+color:#111827;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:768px){
+
+nav ul{
+position:absolute;
+top:90px;
+left:0;
+width:100%;
+background:#111827;
+flex-direction:column;
+text-align:center;
+padding:30px 0;
+display:none;
+}
+
+nav ul.active{
+display:flex;
+}
+
+#menu-btn{
+display:block;
+}
+
+.hero-content h1{
+font-size:50px;
+}
+
+.section-title{
+font-size:40px;
+}
+
+.hero-content p{
+font-size:17px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav>
+
+<div class="logo">STATIC WEB</div>
+
+<ul id="nav-links">
+<li><a href="#home">Home</a></li>
+<li><a href="#about">About</a></li>
+<li><a href="#services">Services</a></li>
+<li><a href="#projects">Projects</a></li>
+<li><a href="#team">Team</a></li>
+<li><a href="#blog">Blog</a></li>
+<li><a href="#pricing">Pricing</a></li>
+<li><a href="#faq">FAQ</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+
+<div class="nav-right">
+
+<button id="theme-toggle">
+<i class="fas fa-moon"></i>
+</button>
+
+<button id="menu-btn">
+<i class="fas fa-bars"></i>
+</button>
+
+</div>
+
+</nav>
+
+<!-- HERO -->
+
+<section class="hero" id="home">
+
+<div class="hero-content reveal">
+
+<h3>Welcome To</h3>
+
+<h1>
+<span class="typing">Static Website</span>
+</h1>
+
+<p>
+Developed a modern and fully responsive frontend website using 
+HTML, CSS, and JavaScript. Implemented interactive UI components,
+ smooth animations, hover effects, Glassmorphism design, and
+  Dark/Light mode functionality. Created professional sections 
+  including Hero, Services, Team, Pricing, FAQ, Blog, and 
+  Contact Form with a mobile-friendly navigation system.
+   Focused on responsive layouts, clean design, and
+    enhanced user experience across all screen sizes. 💻✨
+</p>
+
+<div class="hero-btns">
+<a href="#projects" class="btn primary-btn">Explore</a>
+<a href="#contact" class="btn secondary-btn">Contact</a>
+</div>
+
+<div class="social-icons">
+<a href="#"><i class="fab fa-github"></i></a>
+<a href="#"><i class="fab fa-linkedin"></i></a>
+<a href="#"><i class="fab fa-instagram"></i></a>
+<a href="#"><i class="fab fa-twitter"></i></a>
+</div>
+
+</div>
+
+</section>
+
+<!-- ABOUT -->
+
+<section id="about">
+
+<h2 class="section-title reveal">About Website</h2>
+
+<div class="about-container">
+
+<div class="about-image reveal">
+<img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1200&auto=format&fit=crop">
+</div>
+
+<div class="about-text reveal">
+<p>
+Developed a modern frontend web application using HTML, CSS, and 
+JavaScript, incorporating responsive design principles, advanced 
+UI animations, glassmorphism styling, interactive user interfaces, 
+dark/light theme functionality, and dynamic content sections.
+ The project emphasizes clean design architecture, cross-device 
+ compatibility, performance optimization, and an enhanced 
+ user experience to deliver a visually appealing and professional web solution. 🚀✨
+</p>
+</div>
+
+</div>
+
+<div class="stats">
+
+<div class="stat-box reveal">
+<h2 class="counter" data-target="150">0</h2>
+<p>Projects</p>
+</div>
+
+<div class="stat-box reveal">
+<h2 class="counter" data-target="99">0</h2>
+<p>Clients</p>
+</div>
+
+<div class="stat-box reveal">
+<h2 class="counter" data-target="24">0</h2>
+<p>Awards</p>
+</div>
+
+<div class="stat-box reveal">
+<h2 class="counter" data-target="5">0</h2>
+<p>Years Experience</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- SERVICES -->
+
+<section id="services">
+
+<h2 class="section-title reveal">Services</h2>
+
+<div class="services-grid">
+
+<div class="card reveal">
+<i class="fas fa-code"></i>
+<h3>Web Development</h3>
+<p>Modern responsive websites with premium UI and smooth functionality.</p>
+</div>
+
+<div class="card reveal">
+<i class="fas fa-palette"></i>
+<h3>UI / UX Design</h3>
+<p>Creative layouts with interactive animations and glassmorphism effects.</p>
+</div>
+
+<div class="card reveal">
+<i class="fas fa-mobile-screen"></i>
+<h3>Responsive Design</h3>
+<p>Optimized websites for desktop tablet and mobile devices.</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- PROJECTS -->
+
+<section id="projects">
+
+<h2 class="section-title reveal">Projects</h2>
+
+<div class="projects-grid">
+
+<div class="project-card reveal">
+<img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1200&auto=format&fit=crop">
+
+<div class="project-info">
+<h3>Calculator App</h3>
+<p>Modern calculator with premium design and keyboard support.</p>
+</div>
+</div>
+
+<div class="project-card reveal">
+<img src="https://images.unsplash.com/photo-1556740749-887f6717d7e4?q=80&w=1200&auto=format&fit=crop">
+
+<div class="project-info">
+<h3>E-Commerce Website</h3>
+<p>Responsive shopping website with modern UI and animations.</p>
+</div>
+</div>
+
+<div class="project-card reveal">
+<img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1200&auto=format&fit=crop">
+
+<div class="project-info">
+<h3>Image Gallery</h3>
+<p>Interactive image gallery with hover effects and responsive layouts.</p>
+</div>
+</div>
+
+</div>
+
+</section>
+
+<!-- TEAM -->
+
+<section id="team">
+
+<h2 class="section-title reveal">Our Team</h2>
+
+<div class="team-grid">
+
+<div class="team-card reveal">
+<img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=400&auto=format&fit=crop">
+<h3>saamiya</h3>
+<p>UI Designer</p>
+</div>
+
+<div class="team-card reveal">
+<img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=400&auto=format&fit=crop">
+<h3>kam</h3>
+<p>Frontend Developer</p>
+</div>
+
+<div class="team-card reveal">
+<img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=400&auto=format&fit=crop">
+<h3>sam</h3>
+<p>Creative Director</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- BLOG -->
+
+<section id="blog">
+
+<h2 class="section-title reveal">Latest Blog</h2>
+
+<div class="blog-grid">
+
+<div class="blog-card reveal">
+<img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200&auto=format&fit=crop">
+
+<div class="blog-content">
+<h3>Modern UI Trends</h3>
+<p>Latest UI trends for beautiful responsive websites.</p>
+</div>
+
+</div>
+
+<div class="blog-card reveal">
+<img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?q=80&w=1200&auto=format&fit=crop">
+
+<div class="blog-content">
+<h3>JavaScript Tricks</h3>
+<p>Awesome animations and modern JavaScript features.</p>
+</div>
+
+</div>
+
+<div class="blog-card reveal">
+<img src="https://images.unsplash.com/photo-1522199755839-a2bacb67c546?q=80&w=1200&auto=format&fit=crop">
+
+<div class="blog-content">
+<h3>Responsive Design</h3>
+<p>Creating mobile-friendly professional layouts.</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- PRICING -->
+
+<section id="pricing">
+
+<h2 class="section-title reveal">Pricing</h2>
+
+<div class="pricing-grid">
+
+<div class="price-card reveal">
+<h3>Basic</h3>
+<h2>$49</h2>
+<p>Responsive Website</p>
+<p>Basic UI Design</p>
+<p>3 Pages</p>
+</div>
+
+<div class="price-card reveal">
+<h3>Premium</h3>
+<h2>$99</h2>
+<p>Modern UI</p>
+<p>Animations</p>
+<p>10 Pages</p>
+</div>
+
+<div class="price-card reveal">
+<h3>Ultimate</h3>
+<h2>$199</h2>
+<p>Full Website</p>
+<p>Advanced Features</p>
+<p>Unlimited Pages</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- FAQ -->
+
+<section id="faq">
+
+<h2 class="section-title reveal">FAQ</h2>
+
+<div class="faq">
+
+<div class="faq-item reveal">
+<div class="faq-question">
+<span>Is this website responsive?</span>
+<i class="fas fa-plus"></i>
+</div>
+
+<div class="faq-answer">
+<p>Yes, this website is fully responsive for all devices.</p>
+</div>
+</div>
+
+<div class="faq-item reveal">
+<div class="faq-question">
+<span>Does it support dark mode?</span>
+<i class="fas fa-plus"></i>
+</div>
+
+<div class="faq-answer">
+<p>Yes, it includes fully working dark and light mode.</p>
+</div>
+</div>
+
+<div class="faq-item reveal">
+<div class="faq-question">
+<span>Can I customize this website?</span>
+<i class="fas fa-plus"></i>
+</div>
+
+<div class="faq-answer">
+<p>Yes, you can easily customize colors, sections and layouts.</p>
+</div>
+</div>
+
+</div>
+
+</section>
+<!-- CONTACT -->
+
+<section id="contact">
+
+<div class="contact-box reveal">
+
+<h2>Contact Us</h2>
+
+<p>
+Interested in creating modern websites?
+Let's build something amazing together.
+</p>
+
+<!-- FORM -->
+
+<form class="contact-form" id="contactForm">
+
+<input type="text" id="name" placeholder="Your Name" required>
+
+<input type="email" id="email" placeholder="Your Email" required>
+
+<textarea id="message" rows="6" placeholder="Your Message" required></textarea>
+
+<button type="submit" class="btn primary-btn">
+Send Message
+</button>
+
+</form>
+
+<!-- SUCCESS MESSAGE -->
+
+<div id="successMessage" style="
+display:none;
+margin-top:25px;
+background:#00f0ff;
+color:black;
+padding:18px;
+border-radius:15px;
+font-weight:600;
+animation:fadeIn 0.5s ease;
+">
+Message Sent Successfully 🚀
+</div>
+
+<div class="contact-details">
+
+<div>Email: muskaan6@gmail.com</div>
+
+<div>Phone: +91 9876543210</div>
+
+<div>Location: India</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+© 2026 Static Website | All Rights Reserved
+</footer>
+
+<!-- TOP BUTTON -->
+
+<button id="topBtn">
+<i class="fas fa-arrow-up"></i>
+</button>
+
+<!-- JAVASCRIPT -->
+
+<script>
+
+/* REVEAL */
+
+window.addEventListener('scroll',reveal);
+
+function reveal(){
+
+let reveals=document.querySelectorAll('.reveal');
+
+for(let i=0;i<reveals.length;i++){
+
+let windowHeight=window.innerHeight;
+let revealTop=reveals[i].getBoundingClientRect().top;
+let revealPoint=100;
+
+if(revealTop < windowHeight - revealPoint){
+reveals[i].classList.add('active');
+}
+
+}
+
+}
+
+reveal();
+
+/* DARK MODE */
+
+const themeToggle=document.getElementById('theme-toggle');
+
+themeToggle.addEventListener('click',()=>{
+
+document.body.classList.toggle('light-mode');
+
+if(document.body.classList.contains('light-mode')){
+themeToggle.innerHTML='<i class="fas fa-sun"></i>';
+}else{
+themeToggle.innerHTML='<i class="fas fa-moon"></i>';
+}
+
+});
+
+/* MOBILE MENU */
+
+const menuBtn=document.getElementById('menu-btn');
+const navLinks=document.getElementById('nav-links');
+
+menuBtn.addEventListener('click',()=>{
+
+navLinks.classList.toggle('active');
+
+});
+
+/* COUNTER */
+
+const counters=document.querySelectorAll('.counter');
+
+counters.forEach(counter=>{
+
+counter.innerText='0';
+
+const updateCounter=()=>{
+
+const target=+counter.getAttribute('data-target');
+const c=+counter.innerText;
+
+const increment=target/100;
+
+if(c<target){
+counter.innerText=`${Math.ceil(c+increment)}`;
+setTimeout(updateCounter,20);
+}else{
+counter.innerText=target;
+}
+
+};
+
+updateCounter();
+
+});
+
+/* FAQ */
+
+const faqItems=document.querySelectorAll('.faq-item');
+
+faqItems.forEach(item=>{
+
+item.addEventListener('click',()=>{
+
+item.classList.toggle('active');
+
+});
+
+});
+
+/* TOP BUTTON */
+
+const topBtn=document.getElementById('topBtn');
+
+window.onscroll=function(){
+
+if(document.documentElement.scrollTop > 300){
+topBtn.style.display="block";
+}else{
+topBtn.style.display="none";
+}
+
+};
+
+topBtn.addEventListener('click',()=>{
+
+window.scrollTo({
+top:0,
+behavior:'smooth'
+});
+
+});
+
+</script>
+
+</body>
+</html>
